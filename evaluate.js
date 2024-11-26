@@ -11,8 +11,14 @@ function evaluate(node) {
     case nodeTypes.Additive:
       result = evaluate(node.children[0]) + evaluate(node.children[1])
       break
+    case nodeTypes.Minus:
+      result = evaluate(node.children[0]) - evaluate(node.children[1])
+      break
     case nodeTypes.Multiplicative:
       result = evaluate(node.children[0]) * evaluate(node.children[1])
+      break
+    case nodeTypes.Divide:
+      result = evaluate(node.children[0]) / evaluate(node.children[1])
       break
     case nodeTypes.Numeric:
       result = parseFloat(node.value)

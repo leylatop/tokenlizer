@@ -18,12 +18,12 @@ function additive(tokenReader) {
   let token = tokenReader.peek()
 
   if(child1 !== null && token !== null) {
-    if(token.type === tokenTypes.PLUS) {
+    if(token.type === tokenTypes.PLUS || token.type === tokenTypes.MINUS) {
       token = tokenReader.reader()
       const child2 = additive(tokenReader)
 
       if(child2 !== null) {
-        node = new ASTNode(nodeTypes.Additive)
+        node = new ASTNode(token.type === tokenTypes.PLUS ? nodeTypes.Additive : nodeTypes.Minus)
         node.addChild(child1)
         node.addChild(child2)
       } else {
@@ -41,12 +41,12 @@ function multiplicative(tokenReader) {
   let token = tokenReader.peek()
 
   if (child1 !== null && token !== null) {
-    if (token.type === tokenTypes.MULTIPLY) {
+    if (token.type === tokenTypes.MULTIPLY || token.type === tokenTypes.DIVIDE) {
       token = tokenReader.reader()
       const child2 = multiplicative(tokenReader)
 
       if (child2 !== null) {
-        node = new ASTNode(nodeTypes.Multiplicative)
+        node = new ASTNode(token.type === tokenTypes.MULTIPLY ? nodeTypes.Multiplicative : nodeTypes.Divide)
         node.addChild(child1)
         node.addChild(child2)
       } else {

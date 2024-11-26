@@ -1,6 +1,6 @@
-const RegExp = /([0-9]+)|(\+)|(\*)/g
-const { NUMBER, PLUS, MULTIPLY } = require('./tokenTypes')
-const tokenTypes = [NUMBER, PLUS, MULTIPLY]
+const RegExp = /([0-9]+)|(\+)|(\-)|(\*)|(\/)/g
+const { NUMBER, PLUS, MINUS, MULTIPLY, DIVIDE } = require('./tokenTypes')
+const tokenTypes = [NUMBER, PLUS, MINUS, MULTIPLY, DIVIDE]
 
 /**token生成器 */
 function* tokenizer(script) {
